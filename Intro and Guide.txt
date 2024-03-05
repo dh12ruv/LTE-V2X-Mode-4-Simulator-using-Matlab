@@ -1,0 +1,74 @@
+Two-Junction LTE-V2X mode 4 Simulator: 
+
+Guide to use the Simulator:
+1. Input the vehicle density ranging from 2 to 20.
+   Total number of vehicles = vehicle density * number of directions
+   i.e., 6
+2. Input the MCS index from 0 to 20. 
+
+
+The code block integrates two simulators: (a) Spatial-Environment Simulator 
+and (b) LTE-V2X-Simulator (mode 4)
+(a) Spatial Environment Simulator: 
+  - A city road environment with 3 road-ways, each rodway has two
+    directions, each direction has two lanes resulting in a total of 6
+    directions, namely North-South, South-North, East-West1, West-East1,
+    East-West2, and West-East2
+  - There are 6 gray boxes representing the buildings
+  - The green square boxes represent road side units (RSUs)
+  - The black circular ring around each RSU represent the range of the
+    RSU.
+  - The pink colored moving dots are the vehicles
+  - The black rectangular moving boxes are the vehicles
+  - The blue lines represent the real-time connected links
+  - The red lines represent the real-time blocked links
+
+(b) LTE-V2X-Simulator:
+  - Integrates the UMi-Street Canyon Pathloss Model, simplified version
+  of Semi-Persistent-Scheduling, a simplified
+  version of a Congestion Control Mechanism with CBR and CR calculations, 
+  and Modulation and Coding Schemes. 
+
+
+The connected and blocked states are recorded as 1 and 0 respectively for
+each vehicle at each position and at each time instant. The total 
+simulation run time is set to 200 time slots as default. The connected/
+blocked status are fed into the LTE-V2X-Simulator for PDR and Latency 
+calculations. 
+
+
+MCS index list with coding rate and modulation technique
+reference: 
+{ Bazzi, A., Cecchini, G., Menarini, M., Masini, B.M., & Zanella, A. (2019). 
+Survey and Perspectives of Vehicular Wi-Fi versus Sidelink Cellular-V2X 
+in the 5G Era. Future Internet, 11, 122.}
+
+
+The simulator currently focuses on comparing MCS indices 7 and 11. However, 
+users have the flexibility to visualize Packet Delivery Ratio (PDR) and 
+Latency plots for any specific MCS index from the provided list. 
+The simulator includes a basic MCS implementation, and ongoing updates are 
+being made to improve the accuracy associated with MCS.
+
+MCS0 = struct('EbNo',SNR,'CR',0.13,'Modulation',"QPSK");
+MCS1 = struct('EbNo',SNR,'CR',0.17,'Modulation',"QPSK");
+MCS2 = struct('EbNo',SNR,'CR',0.21,'Modulation',"QPSK");
+MCS3 = struct('EbNo',SNR,'CR',0.27,'Modulation',"QPSK");
+MCS4 = struct('EbNo',SNR,'CR',0.33,'Modulation',"QPSK");
+MCS5 = struct('EbNo',SNR,'CR',0.41,'Modulation',"QPSK");
+MCS6 = struct('EbNo',SNR,'CR',0.48,'Modulation',"QPSK");
+MCS7 = struct('EbNo',SNR,'CR',0.57,'Modulation',"QPSK");
+MCS8 = struct('EbNo',SNR,'CR',0.65,'Modulation',"QPSK");
+MCS9 = struct('EbNo',SNR,'CR',0.73,'Modulation',"QPSK");
+MCS10 = struct('EbNo',SNR,'CR',0.82,'Modulation',"QPSK");
+
+MCS11 = struct('EbNo',SNR,'CR',0.41,'Modulation',"QAM");
+MCS12 = struct('EbNo',SNR,'CR',0.46,'Modulation',"QAM");
+MCS13 = struct('EbNo',SNR,'CR',0.52,'Modulation',"QAM");
+MCS14 = struct('EbNo',SNR,'CR',0.59,'Modulation',"QAM");
+MCS15 = struct('EbNo',SNR,'CR',0.67,'Modulation',"QAM");
+MCS16 = struct('EbNo',SNR,'CR',0.72,'Modulation',"QAM");
+MCS17 = struct('EbNo',SNR,'CR',0.75,'Modulation',"QAM");
+MCS18 = struct('EbNo',SNR,'CR',0.84,'Modulation',"QAM");
+MCS10 = struct('EbNo',SNR,'CR',0.92,'Modulation',"QAM");
+MCS20 = struct('EbNo',SNR,'CR',1,'Modulation',"QAM");
