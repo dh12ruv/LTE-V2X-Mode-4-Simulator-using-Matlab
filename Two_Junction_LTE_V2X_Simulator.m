@@ -1622,16 +1622,16 @@ for mcs = 1:length(MCS_set)
         %index
         %MCS 7: QPSK, (Coding Rate = 0.57, RBs per subchannel = 20,
         %subchannels per subframe = RRI/20 = 100/20 = 5.
-        if MCS <=0 && MCS<5
+        if MCS >= 0 && MCS < 5   %Taqi:Here the condition should be MCS >= 0 && MCS < 5
             subchannel_N = 2;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
-        elseif MCS <=5 && MCS<10
+        elseif MCS >= 5 && MCS < 10   %Taqi:Here the condition should be MCS >= 5 && MCS < 10
             subchannel_N = 5;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
-        elseif MCS <=10 && MCS<15
+        elseif MCS >= 10 && MCS < 15   %Taqi:Here the condition should be MC S>= 10 && MCS < 15
             subchannel_N = 7;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
-        elseif MCS>=15
+        elseif MCS >= 15
             subchannel_N = 10;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
         end
@@ -1752,6 +1752,8 @@ for mcs = 1:length(MCS_set)
         C_R = zeros(1,floor(tMax/10)); %Channel Occupancy Ratio of each vehicle
         C_R_all = [];
 
+
+        % Semi Persistent Scheduling (SPS)
         for tt = 1:tMax
             rt_flag = 1;
             veh_status =  veh_all_per_tt(:,tt); %status of vehicles in each time frame (tt=1)
