@@ -1622,13 +1622,13 @@ for mcs = 1:length(MCS_set)
         %index
         %MCS 7: QPSK, (Coding Rate = 0.57, RBs per subchannel = 20,
         %subchannels per subframe = RRI/20 = 100/20 = 5.
-        if MCS <=0 && MCS<5
+        if MCS >=0 && MCS<5
             subchannel_N = 2;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
-        elseif MCS <=5 && MCS<10
+        elseif MCS >=5 && MCS<10
             subchannel_N = 5;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
-        elseif MCS <=10 && MCS<15
+        elseif MCS >=10 && MCS<15
             subchannel_N = 7;
             slot_delay = 1; %one subframe has two slots. one subframe = 1 msec, one slot = 0.5msec
         elseif MCS>=15
