@@ -1752,6 +1752,8 @@ for mcs = 1:length(MCS_set)
         C_R = zeros(1,floor(tMax/10)); %Channel Occupancy Ratio of each vehicle
         C_R_all = [];
 
+
+        % Semi Persistent Scheduling (SPS)
         for tt = 1:tMax
             rt_flag = 1;
             veh_status =  veh_all_per_tt(:,tt); %status of vehicles in each time frame (tt=1)
